@@ -10,8 +10,9 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 
-public class ProducerDemoWithCallback {
-    private static final Logger log = LoggerFactory.getLogger(ProducerDemo.class.getSimpleName());
+public class ProducerDemoKeys {
+    private static final Logger log = LoggerFactory.getLogger(ProducerDemoKeys.class.getSimpleName());
+
     public static void main(String[] args) {
 
         Properties properties = new Properties();
@@ -27,29 +28,32 @@ public class ProducerDemoWithCallback {
         properties.setProperty("value.serializer", StringSerializer.class.getName());
 
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
-        for(int i=0; i<10; i++) {
-            ProducerRecord<String, String> producerRecord =
-                    new ProducerRecord<>("demo_java", "Kafka java producer consumer demo!" + i);
+        for (int j = 0; j < 2; j++) {
 
-            producer.send(producerRecord, new Callback() {
-                @Override
-                public void onCompletion(RecordMetadata metadata, Exception exception) {
-                    if (exception == null) {
-                        log.info("Received new metadata. \n" +
-                                "Topic: " + metadata.topic() + "\n" +
-                                "Partition: " + metadata.partition() + "\n" +
-                                "Offset: " + metadata.offset() + "\n" +
-                                "Timestamp: " + metadata.timestamp());
-                    } else {
-                        log.error("Error while producing", exception);
+
+            for (int i = 0; i < 10; i++) {
+                String topic = "demo_java_";
+                String key = "id_" + i;
+                String value = "Kafka java producer consumer demo!" + i;
+
+                ProducerRecord<String, String> producerRecord =
+                        new ProducerRecord<>(topic, key, value);
+
+                producer.send(producerRecord, new Callback() {
+                    @Override
+                    public void onCompletion(RecordMetadata metadata, Exception exception) {
+                        if (exception == null) {
+                            log.info("Key: " + key + "| Partition: " + metadata.partition());
+                        } else {
+                            log.error("Error while producing", exception);
+                        }
                     }
-                }
-            });
+                });
+            }
         }
+
         producer.flush();
         producer.close();
 
     }
 }
-
-
