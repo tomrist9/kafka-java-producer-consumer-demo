@@ -16,3 +16,16 @@ A minimal Java application demonstrating Kafka client APIs.
    ```bash
    java -cp target/demo.jar com.example.ProducerApp
    java -cp target/demo.jar com.example.ConsumerApp
+
+## 📸 Demo
+
+Here’s a preview of the project in action:
+
+### 🔍 Consumer Group Monitoring
+Shows the status of your Kafka consumer group and lag.
+![Consumer Group State](screenshots/kafka-template.jpg)
+
+
+### 🔄 Resetting Offsets
+Preview and reset Kafka offsets by partition using the UI.
+![Offset Reset](screenshots/kafka-template2.jpg)
