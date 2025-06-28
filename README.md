@@ -28,4 +28,4 @@ Shows the status of your Kafka consumer group and lag.
 
 ### 🔄 Resetting Offsets
 Preview and reset Kafka offsets by partition using the UI.
-![Consumer Group State](screenshots/kafka-template.jpg)
+![Consumer Group State](screenshots/kafka-template2.jpg)
