@@ -19,13 +19,22 @@ A minimal Java application demonstrating Kafka client APIs.
 
 ## 📸 Demo
 
-Here’s a preview of the project in action:
+Kafka Streams application in action:
 
-### 🔍 Consumer Group Monitoring
-Shows the status of your Kafka consumer group and lag.
+### 🔁 Real-Time Stream Processing  
+Displays how messages flow through your Kafka Streams topology.  
+![Stream Processing](screenshots/kafka_streams.jpg)
+
+Kafka Streams application in action:
+
+### 🔁 Real-Time Stream Processing  
+Displays how messages flow through your Kafka Streams topology.  
+![Stream Processing](screenshots/kafka_streams.jpg)
+
+### 🔍 Consumer Group Monitoring  
+Tracks the active consumer group and current lag.  
 ![Consumer Group State](screenshots/kafka-template.jpg)
 
-
-### 🔄 Resetting Offsets
-Preview and reset Kafka offsets by partition using the UI.
-![Consumer Group State](screenshots/kafka-template2.jpg)
+### 🔄 Offset Reset via UI  
+Reset Kafka offsets to reprocess historical events.  
+![Offset Reset](screenshots/kafka-template2.jpg)
